@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class dadosDP extends Controller
 {
-    //
+    function numerosalazar(){
+
+    }
 }
