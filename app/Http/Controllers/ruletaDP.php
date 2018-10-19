@@ -14,7 +14,7 @@ class ruletaDP extends Controller
     function actualizarPuntaje(Request $request,$id){
         $usuario = leaderboard::find($id);
         $puntuacion = $usuario->puntaje;
-        $usuario->puntaje = $puntaje;
+        $usuario->puntaje = $puntuacion;
         $usuario->save();
     }
     function calcularPuntuacion(){
