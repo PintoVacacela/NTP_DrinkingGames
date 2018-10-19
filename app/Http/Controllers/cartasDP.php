@@ -32,9 +32,9 @@ class cartasDP extends Controller
 
     }
 
-    function obtenerRegla($idCarta)
+    function obtenerRegla($id_carta)
     {
-        $registro=ChullaVida::table('reglas_x_juegos')->where('id_juego',$idCarta);
+        $registro=ChullaVida::table('reglas_x_juegos')->where('id_juego',$id_carta);
         $regla=ChullaVida::table('reglas')->where('id_reglas',$registro[0]);
         return $regla[1];
     }
