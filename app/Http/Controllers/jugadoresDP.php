@@ -3,53 +3,56 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\jugadoresMD;
 
 class jugadoresDP extends Controller
 {
     //
-    function agregarJugador($nombre, $apellido, $fechaNac, $apodo){
-        $jugadormd = new jugadorMD();
-        if(!$jugadormd->verificarJugador($apodo))
-            $result = $jugadormd->saveJugador($nombre, $apellido, $fechaNac, $apodo);
-        else
-            $error = 'Oye, el jugador ya existe!';
-        if ($result)
-            $r = array('success' => true);
-        else
-            $r = array('success' => false, 'error'=> $error);
-        return $r;
+    function agregarJugador(Request $request){
+        $jugador = new jugadoresMD();
+        $jugador->nombre = $request->input('nombre');
+        $jugador->apellido = $request->input('apellido');
+        $jugador->fechaNac = $request->input('fechaNac');
+        $jugador->apodo = $request->input('apodo');
+        $jugador->save();
+        return true;
     }
-    function editarJugador($nombre, $apellido, $fechaNac, $apodo){
-        $jugadormd = new jugadorMD();
-        if($jugadormd->verificarJugador($apodo))
-            $result = $jugadormd->updateJugador($nombre, $apellido, $fechaNac, $apodo);
+    function editarJugador(Request $request){
+        $jugador = \App\jugadoresMD::find($request->input('apodo'));
+        $jugador->nombre = $request->input('nombre');
+        $jugador->apellido = $request->input('apellido');
+        $jugador->fechaNac = $request->input('fechaNac');
+        $jugador->save();
+        if ($jugador)
+            return true;
+        else
+            return false;
+    }
+    function eliminarJugador(Request $request){
+        $jugador = \App\jugadoresMD::find($request->input('apodo'));
+        if($jugador)
+            $result = \App\jugadoresMD::table('jugadores')->where('apodo','=',$request->input('apodo'));
         else
             $error = 'Oye, el jugador no existe!';
         if ($result)
-            $r = array('success' => true);
-        else
-            $r = array('success' => false, 'error'=> $error);
-        return $r;
-    }
-    function eliminarJugador($apodo){
-        $jugadormd = new jugadorMD();
-        if($jugadormd->verificarJugador($apodo))
-            $result = $jugadormd->deleteJugador($apodo);
-        else
-            $error = 'Oye, el jugador no existe!';
-        if ($result)
-            $r = array('success' => true);
+            $r = true;
         else
             $r = array('success' => false, 'error'=> $error);
         return $r;
     }
     function consultarJugadores(){
-        $jugadormd = new jugadorMD();
-        $result = $jugadormd->getAll();
-        if (!empty($result))
-            $r = array('success' => true);
-        else
-            $r = array('success' => false, 'error'=> 'Hubo un error');
-        return $r;
+        $jugadores = \App\jugadoresMD::all();
+        foreach ($jugadores as $row)
+        {
+            $nombre = $row->nombre;
+            $apellido = $row->apellido;
+            $apodo = $row->apodo;
+            $fechaNac = $row->fechaNac;
+
+            $arr = array("nombre"=> $nombre,"apellido"=>$apellido,
+                "apodo"=>$apodo, 'fechaNac'=> $fechaNac);
+            $resultado[] = $arr;
+        }
+        return view ('jugadoresUI',['data' => $resultado]);
     }
 }
