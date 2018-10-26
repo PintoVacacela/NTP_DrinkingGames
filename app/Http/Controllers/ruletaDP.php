@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\ruleta;
+//use App\puntajes;
 class ruletaDP extends Controller
 {
-    var $valor=0;
-
     function retornarUsuario($id){
-         $jugador = leaderboard :: where ("id",$id);
-          return $jugador;
+        $jugador = ruleta:: where ("id",$id);
+        return $jugador;
     }
     function actualizarPuntaje(Request $request,$id)
     {
-        $usuario = leaderboard::find($id);
+        $valor=25;
+        $ruleta = new ruleta;
+        $puntaje = new puntaje;
+        $usuario = puntaje::find($id);
         $temp = $request->input('boton');
         $puntuacion = $usuario->puntaje;
         if($temp == 'yes')
