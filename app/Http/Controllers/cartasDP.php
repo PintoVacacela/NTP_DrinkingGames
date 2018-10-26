@@ -8,8 +8,9 @@ class cartasDP extends Controller
 {
 
 
-    function cascada($numJugadores)
+    function cascada(Request $r)
     {
+        $numJugadores=$r->input('numJugadores');
         $cartasJugador=array(array());
 
         $cartas=traerCartas();
@@ -32,15 +33,17 @@ class cartasDP extends Controller
 
     }
 
-    function obtenerRegla($id_carta)
+    function obtenerRegla(Request $r)
     {
+        $id_carta = $r->input('id_carta');
         $registro=ChullaVida::table('reglas_x_juegos')->where('id_juego',$id_carta);
         $regla=ChullaVida::table('reglas')->where('id_reglas',$registro[0]);
         return $regla[1];
     }
 
-    function desordenarCartas($cartas)
+    function desordenarCartas(Request $r)
     {
+        $cartas=$r->input('cartas');
         $indice=0;
         $aux[]=null;
         $count=0;
@@ -76,22 +79,28 @@ class cartasDP extends Controller
 
     }
 
-    function ingresarRegla( $regla,$idCarta)
+    function ingresarRegla( Request $r)
     {
+
+        $regla=$r->input('regla');
+        $idCarta=$r->input('idCarta');
         ChullaVida::table('reglas')->insert( $regla );
 
         $idRegla=ChullaVida::table('reglas')->where ('descripcion',$regla);
         ChullaVida::table('reglas_x_juegos')->insert($idRegla,$idCarta);
 
     }
-    function borrarRegla($idRegla)
+    function borrarRegla(Request $r)
     {
+        $idRegla=$r->input('idRegla');
         ChullaVida::table('reglas')->where('id_reglas',$idRegla)->delete();
         ChullaVida::table('reglas_x_juegos')->where('id_reglas',$idRegla)->delete();
 
     }
-    function editarRegla($idRegla,$regla)
+    function editarRegla(Request $r)
     {
+        $idRegla=$r->input('idRegla');
+        $regla=$r->input('regla');
         ChullaVida::table('reglas')->where('id_reglas',$idRegla)->update('descripcion',$regla);
     }
     function verReglas()
