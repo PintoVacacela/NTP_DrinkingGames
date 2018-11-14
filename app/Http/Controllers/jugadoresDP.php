@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\jugadoresMD;
+use App\jugador;
 
 class jugadoresDP extends Controller
 {
     //
     function agregarJugador(Request $request){
-        $jugador = new jugadoresMD();
+        $jugador = new jugador();
+        $jugador->id = 0;
         $jugador->nombre = $request->input('nombre');
         $jugador->apellido = $request->input('apellido');
         $jugador->fechaNac = $request->input('fechaNac');
@@ -18,7 +19,7 @@ class jugadoresDP extends Controller
         return true;
     }
     function editarJugador(Request $request){
-        $jugador = \App\jugadoresMD::find($request->input('apodo'));
+        $jugador = \App\jugador::find($request->input('apodo'));
         $jugador->nombre = $request->input('nombre');
         $jugador->apellido = $request->input('apellido');
         $jugador->fechaNac = $request->input('fechaNac');
@@ -29,7 +30,7 @@ class jugadoresDP extends Controller
             return false;
     }
     function eliminarJugador(Request $request){
-        $jugador = \App\jugadoresMD::find($request->input('apodo'));
+        $jugador = \App\jugador::find($request->input('apodo'));
         if($jugador)
             $result = \App\jugadoresMD::table('jugadores')->where('apodo','=',$request->input('apodo'));
         else
@@ -41,8 +42,8 @@ class jugadoresDP extends Controller
         return $r;
     }
     function consultarJugadores(){
-        $jugadores = \App\jugadoresMD::all();
-        foreach ($jugadores as $row)
+        $jugadores = \App\jugador::all();
+        /*foreach ($jugadores as $row)
         {
             $nombre = $row->nombre;
             $apellido = $row->apellido;
@@ -52,7 +53,7 @@ class jugadoresDP extends Controller
             $arr = array("nombre"=> $nombre,"apellido"=>$apellido,
                 "apodo"=>$apodo, 'fechaNac'=> $fechaNac);
             $resultado[] = $arr;
-        }
-        return $resultado;
+        }*/
+        return $jugadores;
     }
 }
