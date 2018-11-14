@@ -53,6 +53,6 @@ class jugadoresDP extends Controller
                 "apodo"=>$apodo, 'fechaNac'=> $fechaNac);
             $resultado[] = $arr;
         }
-        return view ('jugadoresUI',['data' => $resultado]);
+        return $resultado;
     }
 }
