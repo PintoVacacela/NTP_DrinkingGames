@@ -42,7 +42,7 @@ class jugadoresDP extends Controller
         return $r;
     }
     function consultarJugadores(){
-        $jugadores = \App\jugador::all();
+        $jugadores = Array('data'=>\App\jugador::all());
         /*foreach ($jugadores as $row)
         {
             $nombre = $row->nombre;
@@ -54,6 +54,7 @@ class jugadoresDP extends Controller
                 "apodo"=>$apodo, 'fechaNac'=> $fechaNac);
             $resultado[] = $arr;
         }*/
-        return $jugadores;
+        $resultado = json_encode($jugadores);
+        return $resultado;
     }
 }
