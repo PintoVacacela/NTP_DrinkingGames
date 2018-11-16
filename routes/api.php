@@ -18,5 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::post('/agregarjugador','jugadoresDP@agregarJugador');
 Route::put('/editarjugador','jugadoresDP@editarJugador');
-Route::delete('/eliminarjugador','jugadoresDP@eliminarJugador');
+Route::delete('/eliminarjugador/{id}','jugadoresDP@eliminarJugador');
 Route::get('/consultarjugadores','jugadoresDP@consultarJugadores');

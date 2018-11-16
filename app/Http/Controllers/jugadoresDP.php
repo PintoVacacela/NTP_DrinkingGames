@@ -4,19 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\jugador;
+use PhpParser\Node\Expr\Array_;
 
 class jugadoresDP extends Controller
 {
     //
     function agregarJugador(Request $request){
-        $jugador = new jugador();
+        $jugador = new jugador;
         $jugador->id = 0;
         $jugador->nombre = $request->input('nombre');
         $jugador->apellido = $request->input('apellido');
         $jugador->fechaNac = $request->input('fechaNac');
         $jugador->apodo = $request->input('apodo');
         $jugador->save();
-        return true;
+        return Array('result'=>$jugador);
     }
     function editarJugador(Request $request){
         $jugador = \App\jugador::find($request->input('apodo'));
@@ -29,17 +30,10 @@ class jugadoresDP extends Controller
         else
             return false;
     }
-    function eliminarJugador(Request $request){
-        $jugador = \App\jugador::find($request->input('apodo'));
-        if($jugador)
-            $result = \App\jugadoresMD::table('jugadores')->where('apodo','=',$request->input('apodo'));
-        else
-            $error = 'Oye, el jugador no existe!';
-        if ($result)
-            $r = true;
-        else
-            $r = array('success' => false, 'error'=> $error);
-        return $r;
+    function eliminarJugador($id){
+        $jugador = \App\jugador::findOrFail($id);
+        $jugador->delete();
+        return Array("success"=>true);
     }
     function consultarJugadores(){
         $jugadores = Array('data'=>\App\jugador::all());
