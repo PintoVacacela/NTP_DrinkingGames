@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\cartas;
 
 class cartasDP extends Controller
 {
@@ -10,30 +11,20 @@ class cartasDP extends Controller
 
     function cascada()
     {
-        $jugdores=$jugadores = Array('data'=>\App\jugador::all());;
+        $jugdores= \App\jugador::all();
         $num=count($jugdores);
         $cartasJugador=array(array());
 
         $cartas=$this->traerCartas();
-        $count=0;
-        $count2=0;
         $cartasDesordenadas=$this->desordenarCartas($cartas);
 
         $reglas=array();
         for($i=0;$i<count($cartasDesordenadas);$i++)
         {
-             if($count=$num-1)
-             {
-                 $count=0;
-                 $count2++;
-             }
+             $reglas[$i]=$this->obtenerRegla($cartasDesordenadas[$i]->id_cartas);
 
-             $cartasJugador[$count][$count2]=$cartasDesordenadas[$i];
-
-             $reglas[$i]=obtenerRegla($cartasDesordenadas[$i][0]);
-             $count++;
         }
-        $reglas  = json_encode($reglas);
+        //$reglas  = json_encode($reglas);
         return $reglas;
     }
 
@@ -51,9 +42,9 @@ class cartasDP extends Controller
         $indice=0;
         $aux[]=null;
         $count=0;
-        while($count<count($cartas[$indice]))
+        while($count<count($cartas))
         {
-            $num1=rand($indice,count($cartas[$indice])-1);
+            $num1=rand($indice,count($cartas)-1);
             if(!in_array($num1,$aux))
             {
 
@@ -68,18 +59,8 @@ class cartasDP extends Controller
 
     function traerCartas()
     {
-        $cartas=Array('data1'=>\App\cartas::all());;
-        foreach($cartas as $row)
-        {
-            $id_cartas[]=$row->id_cartas;
-            $numero[]=$row->numero;
-            $palo[]=$row->palo;
-            $imagen[]=$row->imagen ;
-
-        }
-
-        $arr=array('id_cartas'=>$id_cartas,'numero'=>$numero,'palo'=>$palo,'imagen'=>$imagen);
-        return $arr;
+        $res = \App\cartas::all();
+        return $res;
 
     }
 
@@ -121,18 +102,8 @@ class cartasDP extends Controller
 
     }
     function consultarCartas(){
-        $carta = Array('data'=>\App\cartas::all());
-        /*foreach ($jugadores as $row)
-        {
-            $nombre = $row->nombre;
-            $apellido = $row->apellido;
-            $apodo = $row->apodo;
-            $fechaNac = $row->fechaNac;
+        $carta = Array('cartas'=>\App\cartas::all());
 
-            $arr = array("nombre"=> $nombre,"apellido"=>$apellido,
-                "apodo"=>$apodo, 'fechaNac'=> $fechaNac);
-            $resultado[] = $arr;
-        }*/
         $resultado = json_encode($carta);
         return $resultado;
     }
