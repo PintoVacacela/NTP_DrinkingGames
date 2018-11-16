@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class carta extends Model
+class cartas extends Model
 {
     public $timestamps = false;
 

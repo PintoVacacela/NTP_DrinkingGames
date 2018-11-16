@@ -8,42 +8,46 @@ class cartasDP extends Controller
 {
 
 
-    function cascada(Request $r)
+    function cascada()
     {
-        $numJugadores=$r->input('numJugadores');
+        $jugdores=$jugadores = Array('data'=>\App\jugador::all());;
+        $num=count($jugdores);
         $cartasJugador=array(array());
 
-        $cartas=traerCartas();
+        $cartas=$this->traerCartas();
         $count=0;
         $count2=0;
         $cartasDesordenadas=$this->desordenarCartas($cartas);
+
+        $reglas=array();
         for($i=0;$i<count($cartasDesordenadas);$i++)
         {
-             if($count=$numJugadores-1)
+             if($count=$num-1)
              {
                  $count=0;
                  $count2++;
              }
 
              $cartasJugador[$count][$count2]=$cartasDesordenadas[$i];
-             obtenerRegla($cartasDesordenadas[$i][0]);
+
+             $reglas[$i]=obtenerRegla($cartasDesordenadas[$i][0]);
              $count++;
         }
-
-
+        $reglas  = json_encode($reglas);
+        return $reglas;
     }
 
-    function obtenerRegla(Request $r)
+    function obtenerRegla($id_carta)
     {
-        $id_carta = $r->input('id_carta');
+
         $registro=ChullaVida::table('reglas_x_juegos')->where('id_juego',$id_carta);
         $regla=ChullaVida::table('reglas')->where('id_reglas',$registro[0]);
         return $regla[1];
     }
 
-    function desordenarCartas(Request $r)
+    function desordenarCartas($cartas)
     {
-        $cartas=$r->input('cartas');
+
         $indice=0;
         $aux[]=null;
         $count=0;
@@ -64,7 +68,7 @@ class cartasDP extends Controller
 
     function traerCartas()
     {
-        $cartas=ChullaVida::table('cartas')->get();
+        $cartas=Array('data1'=>\App\cartas::all());;
         foreach($cartas as $row)
         {
             $id_cartas[]=$row->id_cartas;
@@ -115,6 +119,22 @@ class cartasDP extends Controller
         }
         return $descripcion();
 
+    }
+    function consultarCartas(){
+        $carta = Array('data'=>\App\cartas::all());
+        /*foreach ($jugadores as $row)
+        {
+            $nombre = $row->nombre;
+            $apellido = $row->apellido;
+            $apodo = $row->apodo;
+            $fechaNac = $row->fechaNac;
+
+            $arr = array("nombre"=> $nombre,"apellido"=>$apellido,
+                "apodo"=>$apodo, 'fechaNac'=> $fechaNac);
+            $resultado[] = $arr;
+        }*/
+        $resultado = json_encode($carta);
+        return $resultado;
     }
 
 

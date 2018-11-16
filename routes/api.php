@@ -20,3 +20,4 @@ Route::post('/agregarjugador','jugadoresDP@agregarJugador');
 Route::put('/editarjugador','jugadoresDP@editarJugador');
 Route::delete('/eliminarjugador/{id}','jugadoresDP@eliminarJugador');
 Route::get('/consultarjugadores','jugadoresDP@consultarJugadores');
+Route::get('/regla','cartasDP@consultarCartas');
