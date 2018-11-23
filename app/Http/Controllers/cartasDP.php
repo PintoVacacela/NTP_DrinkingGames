@@ -34,13 +34,26 @@ class cartasDP extends Controller
         $reglas_x_juegos=Array('reglas_x_cartas'=>\App\reglas_x_juegos::all());
         $reglas=Array('reglas'=>\App\reglas::all());
 
+
         for($i=0;$i<count($reglas_x_juegos);$i++)
         {
 
 
+            if($id_carta==$reglas_x_juegos[$i]->id_juego)
+            {
+
+                for($j=0;$j<count($reglas);$j++)
+                {
+                    if($reglas_x_juegos[$i]->id_reglas==$reglas[$j]->id_reglas)
+                        $regla=$reglas[$j]->descripcion;
+                }
+
+            }
+
+
         }
 
-
+        return $regla;
     }
 
     function desordenarCartas($cartas)
