@@ -31,9 +31,16 @@ class cartasDP extends Controller
     function obtenerRegla($id_carta)
     {
 
-        $registro=ChullaVida::table('reglas_x_juegos')->where('id_juego',$id_carta);
-        $regla=ChullaVida::table('reglas')->where('id_reglas',$registro[0]);
-        return $regla[1];
+        $reglas_x_juegos=Array('reglas_x_cartas'=>\App\reglas_x_juegos::all());
+        $reglas=Array('reglas'=>\App\reglas::all());
+
+        for($i=0;$i<count($reglas_x_juegos);$i++)
+        {
+
+
+        }
+
+
     }
 
     function desordenarCartas($cartas)
