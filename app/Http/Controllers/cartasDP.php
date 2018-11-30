@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\cartas;
+use App\reglas;
+use App\reglas_x_juegos;
+use App\jugador;
+use phpDocumentor\Reflection\Types\Array_;
 
 class cartasDP extends Controller
 {
@@ -11,38 +15,48 @@ class cartasDP extends Controller
 
     function cascada()
     {
-        $jugdores= \App\jugador::all();
-        $num=count($jugdores);
-        $cartasJugador=array(array());
 
-        $cartas=$this->traerCartas();
-        $cartasDesordenadas=$this->desordenarCartas($cartas);
-
-        $reglas=array();
-        for($i=0;$i<count($cartasDesordenadas);$i++)
+        $jugadores= \App\jugador::all();
+        $cartas = \App\cartas::all();
+        $cartasDesor[0]=null;
+        $aux=$this->desordenarCartas($cartas);
+        $regla[0]=null;
+        $todo[][]=null;
+        $count=0;
+        for($i=0;$i<count($cartas);$i++)
         {
-             $reglas[$i]=$this->obtenerRegla($cartasDesordenadas[$i]->id_cartas);
+            if($count>=count($jugadores))
+                $count=0;
+
+                $cartasDesor[$i] = $cartas[$aux[$i]];
+                $regla[$i] = $this->obtenerRegla($cartasDesor[$i]->id);
+                $todo[$i][0] = $cartasDesor[$i];
+                $todo[$i][1] = $regla[$i];
+                $todo[$i][2]=$jugadores[$count];
+                $count++;
 
         }
-        //$reglas  = json_encode($reglas);
-        return $reglas;
+
+        return $todo;
+
     }
 
 
     function consultarCartas(){
-        $carta = Array('cartas'=>\App\cartas::all());
+        $carta = \App\reglas::all();
 
-        $resultado = $carta;
-        return $resultado;
+
+        return $carta;
     }
 
     function obtenerRegla($id_carta)
     {
 
-        $reglas_x_juegos=Array('reglas_x_juegos'=>\App\reglas_x_juegos::all());
-        $reglas=Array('reglas'=>\App\reglas::all());
-
-
+        $reglas_x_juegos=\App\reglas_x_juegos::all();
+        $reglas=\App\reglas::all();
+        $cont=null;
+       $regla=null;
+       $aux=null;
         for($i=0;$i<count($reglas_x_juegos);$i++)
         {
 
@@ -50,38 +64,44 @@ class cartasDP extends Controller
             if($id_carta==$reglas_x_juegos[$i]->id_juego)
             {
 
+                $cont=$reglas_x_juegos[$i]->id_reglas;
+
                 for($j=0;$j<count($reglas);$j++)
                 {
-                    if($reglas_x_juegos[$i]->id_reglas==$reglas[$j]->id_reglas)
-                        $regla=$reglas[$j]->descripcion;
+                    if($reglas[$j]->id==$cont)
+                    {
+                        $aux=$reglas[$j];
+                    }
                 }
+
 
             }
 
 
         }
 
-        return $regla;
+        return $aux;
     }
 
     function desordenarCartas($cartas)
     {
 
-        $indice=0;
-        $aux[]=null;
+        $aux=count($cartas)-1;
         $count=0;
-        while($count<count($cartas))
+        $arr[0]=null;
+        while($count<=$aux)
         {
-            $num1=rand($indice,count($cartas)-1);
-            if(!in_array($num1,$aux))
+            $num1=rand(0,$aux);
+            if(!in_array($num1,$arr))
             {
-
-                $aux[$count]=$num1;
-                $arr[$count]=$cartas[$num1];
-                $count++;
+               $arr[$count]=$num1;
+               $count++;
             }
         }
+
         return $arr;
+
+
     }
 
 

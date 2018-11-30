@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('/ruleta', 'ruletaDP@actualizarPuntaje');
-Route::get('/regla','cartasDP@consultarCartas');
+Route::get('/regla','cartasDP@cascada');
