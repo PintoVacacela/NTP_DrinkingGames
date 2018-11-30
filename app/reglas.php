@@ -8,5 +8,5 @@ class reglas extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['id_reglas', 'descripcion'];
+    protected $fillable = ['id', 'descripcion'];
 }

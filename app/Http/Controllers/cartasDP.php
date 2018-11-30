@@ -28,10 +28,18 @@ class cartasDP extends Controller
         return $reglas;
     }
 
+
+    function consultarCartas(){
+        $carta = Array('cartas'=>\App\cartas::all());
+
+        $resultado = $carta;
+        return $resultado;
+    }
+
     function obtenerRegla($id_carta)
     {
 
-        $reglas_x_juegos=Array('reglas_x_cartas'=>\App\reglas_x_juegos::all());
+        $reglas_x_juegos=Array('reglas_x_juegos'=>\App\reglas_x_juegos::all());
         $reglas=Array('reglas'=>\App\reglas::all());
 
 
@@ -121,12 +129,7 @@ class cartasDP extends Controller
         return $descripcion();
 
     }
-    function consultarCartas(){
-        $carta = Array('cartas'=>\App\cartas::all());
 
-        $resultado = json_encode($carta);
-        return $resultado;
-    }
 
 
 }

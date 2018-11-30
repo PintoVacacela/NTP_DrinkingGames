@@ -8,5 +8,5 @@ class cartas extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['id_cartas', 'numero', 'palo', 'imagen'];
+    protected $fillable = ['id', 'numero', 'palo', 'imagen'];
 }
