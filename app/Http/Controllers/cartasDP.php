@@ -37,7 +37,7 @@ class cartasDP extends Controller
 
         }
 
-        return $todo;
+        return json_encode($todo);
 
     }
 

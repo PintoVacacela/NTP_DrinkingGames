@@ -20,5 +20,5 @@ Route::post('/agregarjugador','jugadoresDP@agregarJugador');
 Route::put('/editarjugador','jugadoresDP@editarJugador');
 Route::delete('/eliminarjugador/{id}','jugadoresDP@eliminarJugador');
 Route::get('/consultarjugadores','jugadoresDP@consultarJugadores');
-Route::get('/regla','cartasDP@cascada');
+Route::get('/juegoCascada','cartasDP@cascada');
 Route::get('/getpuntaje/{juego}', 'puntajesDP@getTop5');
