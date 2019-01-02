@@ -13,6 +13,7 @@ class cartasDP extends Controller
 {
 
 
+
     function cascada()
     {
 
@@ -36,8 +37,8 @@ class cartasDP extends Controller
                 $count++;
 
         }
-
-        return json_encode($todo);
+        $todo1=Array('data'=>$todo);
+        return json_encode($todo1);
 
     }
 
@@ -112,7 +113,7 @@ class cartasDP extends Controller
 
     }
 
-    function ingresarRegla( Request $r)
+    /*function ingresarRegla( Request $r)
     {
 
         $regla=$r->input('regla');
@@ -148,7 +149,7 @@ class cartasDP extends Controller
         }
         return $descripcion();
 
-    }
+    }*/
 
 
 
