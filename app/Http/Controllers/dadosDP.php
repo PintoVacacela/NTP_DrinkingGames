@@ -6,6 +6,23 @@ use Illuminate\Http\Request;
 
 class dadosDP extends Controller
 {
+    function desordenarDados($dados)
+    {
+        $aux=count($dados)-1;
+        $count=0;
+        $arr[0]=null;
+        while($count<=$aux)
+        {
+            $num1=rand(0,$aux);
+            if(!in_array($num1,$arr))
+            {
+                $arr[$count]=$num1;
+                $count++;
+            }
+        }
+        return $arr;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -73,11 +90,9 @@ class dadosDP extends Controller
      */
     public function update(Request $request, Dados $dados)
     {
-        $dados = Dados::find($id_dados);
-        $dados->nombre = $request->input('nombre');
-        $dados->image = $request->input('imagen');
-        $dados->save();
-        echo json_encode($dados);
+        $dados = \App\reglas::all();
+        return $dados;
+
     }
 
     /**
