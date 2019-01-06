@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\dados;
 
 class dadosDP extends Controller
 {
@@ -30,8 +31,9 @@ class dadosDP extends Controller
      */
     public function index()
     {
-        $dados = Dados::get();
-        echo json_encode($dados);
+        $dados = dados::all();
+        //print_r($dados);
+        return response()->json($dados, 200);
     }
 
     /**
@@ -52,7 +54,7 @@ class dadosDP extends Controller
      */
     public function store(Request $request)
     {
-        $dados = new Dados();
+        $dados = new dados();
         $dados->nombre = $request->input('nombre');
         $dados->image = $request->input('imagen');
         $dados->save();
@@ -62,10 +64,10 @@ class dadosDP extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Dados  $dados
+     * @param  \App\dados  $dados
      * @return \Illuminate\Http\Response
      */
-    public function show(Dados $dados)
+    public function show(dados $dados)
     {
         //
     }
@@ -73,10 +75,10 @@ class dadosDP extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Dados  $dados
+     * @param  \App\dados  $dados
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dados $dados)
+    public function edit(dados $dados)
     {
         //
     }
@@ -85,10 +87,10 @@ class dadosDP extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Dados  $dados
+     * @param  \App\dados  $dados
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dados $dados)
+    public function update(Request $request, dados $dados)
     {
         $dados = \App\reglas::all();
         return $dados;
@@ -98,12 +100,12 @@ class dadosDP extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Dados  $dados
+     * @param  \App\dados  $dados
      * @return \Illuminate\Http\Response
      */
     public function destroy($id_dados)
     {
-        $dados = Dados::find($id_dados);
+        $dados = dados::find($id_dados);
         $dados->delete();
     }
 }

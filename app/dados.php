@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class dado extends Model
+class dados extends Model
 {
     //
     // Table Name
@@ -12,6 +12,6 @@ class dado extends Model
     //  Primary Key
     public $primaryKey = 'id';
     // Timestapms
-    public $timestamps = true;
+    protected $fillable = ['id', 'nombre','imagen'];
 
 }
