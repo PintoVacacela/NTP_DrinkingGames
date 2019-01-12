@@ -23,3 +23,4 @@ Route::get('/consultarjugadores','jugadoresDP@consultarJugadores');
 Route::get('/juegoCascada','cartasDP@cascada');
 Route::get('/getpuntaje/{juego}', 'puntajesDP@getTop5');
 Route::get('/prue','cartasDP@prueba');
+Route::get('/dados','dadosDP@index');
