@@ -11,7 +11,7 @@ class jugadoresDP extends Controller
     //
     function agregarJugador(Request $request){
         $jugador = new jugador;
-        $jugador->id = 0;
+        //$jugador->id = 0;
         $jugador->nombre = $request->input('nombre');
         $jugador->apellido = $request->input('apellido');
         $jugador->fechaNac = $request->input('fechaNac');
