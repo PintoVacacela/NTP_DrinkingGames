@@ -28,7 +28,7 @@ class ruletaDP extends Controller
         $resul = giro::select("giro")->orderBy('id', 'desc')
                 ->limit(1)->get();
         if ($resul)
-            return Array('data'=>$resul);
+            return $resul;
         else
             return Array('success' => false);
     }
