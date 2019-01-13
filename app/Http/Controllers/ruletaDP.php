@@ -30,7 +30,7 @@ class ruletaDP extends Controller
     }
     function getGiro(){
         $resul = giro::select("giro")->orderBy('id', 'desc')
-                ->limit(1)->get();
+                ->get();
         if ($resul)
             return $resul;
         else
