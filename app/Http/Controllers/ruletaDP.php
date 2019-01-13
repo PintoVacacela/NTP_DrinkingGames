@@ -19,7 +19,7 @@ class ruletaDP extends Controller
 
     function setGiro($valor)
     {
-        $valorbool= ($valor)?1:0;
+        $valorbool= ($valor==true)?1:0;
         $giro = new giro;
         $giro->giro = $valorbool;
         $giro->save();
