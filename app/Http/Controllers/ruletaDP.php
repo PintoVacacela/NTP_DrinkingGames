@@ -19,11 +19,11 @@ class ruletaDP extends Controller
 
     function setGiro($valor)
     {
-        $valor= ($valor)?1:0;
+        $valorbool= ($valor)?1:0;
         $giro = new giro;
-        $giro->giro = $valor;
+        $giro->giro = $valorbool;
         $giro->save();
-        return Array('data' => $valor);
+        return Array('data' => $valorbool);
     }
     function getGiro(){
         $resul = giro::select("giro")->orderBy('id', 'desc')
