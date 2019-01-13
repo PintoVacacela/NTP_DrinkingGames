@@ -10,5 +10,5 @@ class giro extends Model
     //Con los sig comando se accede a la base de datos
     protected $table = 'giros';
     //protected $primaryKey = 'nombreidpersolanizado';
-    protected $fillable = ['id', 'giro'];
+    protected $fillable = ['id', 'valor'];
 }
