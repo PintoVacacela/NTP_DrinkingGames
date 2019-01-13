@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ruleta;
+use App\giro;
 
 //use App\puntajes;
 class ruletaDP extends Controller
 {
-    public $giro = false;
     public $pin;
 
     function retornarUsuario($id)
@@ -19,13 +19,16 @@ class ruletaDP extends Controller
 
     function setGiro($valor)
     {
-        $giro = $valor;
-        return Array('success' => $valor);
+        $giro = new giro;
+        $giro->giro = $valor;
+        $giro->save();
+        return Array('data' => $valor);
     }
     function getGiro(){
-        if (isset($giro)) {
-            return Array('giro' => $giro);
-        }
+        $resul = giro::select("giro")->orderBy('id', 'desc')
+                ->limit(1)->get();
+        if ($resul)
+            return Array('data'=>$resul);
         else
             return Array('success' => false);
     }
