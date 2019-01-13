@@ -86,7 +86,6 @@ class cartasDP extends Controller
 
     function desordenarCartas($cartas)
     {
-
         $aux=count($cartas)-1;
         $count=0;
         $arr[0]=null;
@@ -99,10 +98,7 @@ class cartasDP extends Controller
                $count++;
             }
         }
-
         return $arr;
-
-
     }
 
 

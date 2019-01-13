@@ -24,6 +24,30 @@ class dadosDP extends Controller
         return $arr;
     }
 
+    function obtenerRegla($id_dado)
+    {
+        $reglas_x_juegos=\App\reglas_x_juegos::all();
+        $reglas=\App\reglas::all();
+        $cont=null;
+        $regla=null;
+        $aux=null;
+        for($i=0;$i<count($reglas_x_juegos);$i++)
+        {
+            if($id_dado==$reglas_x_juegos[$i]->id_juego)
+            {
+                $cont=$reglas_x_juegos[$i]->id_reglas;
+                for($j=0;$j<count($reglas);$j++)
+                {
+                    if($reglas[$j]->id==$cont)
+                    {
+                        $aux=$reglas[$j];
+                    }
+                }
+            }
+        }
+        return $aux;
+    }
+
     /**
      * Display a listing of the resource.
      *
