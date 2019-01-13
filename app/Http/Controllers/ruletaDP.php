@@ -17,9 +17,9 @@ class ruletaDP extends Controller
         return $jugador;
     }
 
-    function setGiro(Request $request)
+    function setGiro($valor)
     {
-        $giro = $request->input('giro');
+        $giro = $valor;
         return Array('success' => true);
     }
     function getGiro(){
