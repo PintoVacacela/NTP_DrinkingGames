@@ -15,7 +15,7 @@ class CreateGirosTable extends Migration
     {
         Schema::create('giros', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('giro');
+            $table->string('giro');
             $table->timestamps();
         });
     }
