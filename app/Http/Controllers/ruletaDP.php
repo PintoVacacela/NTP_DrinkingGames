@@ -20,7 +20,7 @@ class ruletaDP extends Controller
     function setGiro($valor)
     {
         $giro = $valor;
-        return Array('success' => true);
+        return Array('success' => $valor);
     }
     function getGiro(){
         if (isset($giro)) {

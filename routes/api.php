@@ -25,4 +25,5 @@ Route::get('/getpuntaje/{juego}', 'puntajesDP@getTop5');
 Route::get('/prue','cartasDP@prueba');
 Route::get('/dados','dadosDP@index');
 Route::get('/setgiro/{valor}','ruletaDP@setGiro');
+Route::get('/getgiro', 'ruletaDP@getGiro');
 Route::get('/ruleta/{id}','ruletaDP@pin');
