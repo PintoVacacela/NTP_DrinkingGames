@@ -20,10 +20,13 @@ class jugadoresDP extends Controller
         return Array('result'=>$jugador);
     }
     function editarJugador(Request $request){
+        $time = strtotime($request->input('fechaNac'));
+
+        $newformat = date('Y-m-d',$time);
         $jugador = \App\jugador::find($request->input('apodo'));
         $jugador->nombre = $request->input('nombre');
         $jugador->apellido = $request->input('apellido');
-        $jugador->fechaNac = $request->input('fechaNac');
+        $jugador->fechaNac = $newformat;
         $jugador->save();
         if ($jugador)
             return true;

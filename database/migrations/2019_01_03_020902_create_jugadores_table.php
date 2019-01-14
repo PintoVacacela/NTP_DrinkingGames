@@ -18,7 +18,7 @@ class CreateJugadoresTable extends Migration
             $table->string('apodo');
             $table->string('nombre');
             $table->string('apellido');
-            $table->date('fechaNac');
+            $table->date('fechaNac')->nullable();
             $table->timestamps();
         });
     }
