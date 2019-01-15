@@ -20,6 +20,11 @@ class cartasDP extends Controller
         $reglas->save();
         return Array('result'=>$reglas);
     }
+    function eliminarReglaJuego($id){
+        $regla = reglas_x_juegos::findOrFail($id);
+        $regla->delete();
+        return Array("success"=>true);
+    }
     function agregarReglasJuegos(Request $request){
         $reglasjuego = new reglas_x_juegos;
         //$jugador->id = 0;
