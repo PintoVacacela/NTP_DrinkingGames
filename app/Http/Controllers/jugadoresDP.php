@@ -28,7 +28,7 @@ class jugadoresDP extends Controller
         //echo $jugador;
         $puntaje = new puntaje;
         //$puntaje->id = 0;
-        $puntaje->id_jugador = $jugador;
+        $puntaje->id_jugador = $jugador[0]->id;
         $puntaje->puntajes_cartas = 2;
         $puntaje->puntajes_dados = 2;
         $puntaje->puntajes_ruleta = 2;
