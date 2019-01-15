@@ -29,7 +29,7 @@ Route::get('/dados','dadosDP@index');
 Route::post('/editarpuntaje/{apodo}','jugadoresDP@agregarPuntaje');
 Route::post('/setgiro/{valor}','ruletaDP@setGiro');
 Route::get('/getgiro', 'ruletaDP@getGiro');
-Route::get('/ruleta/{id}','ruletaDP@pin');
+Route::post('/ruleta/{id}','ruletaDP@pin');
 Route::post('/addcartas','cartasDP@agregarCartas');
 Route::post('/addreglas','cartasDP@agregarReglas');
 Route::post('/addreglasjuego','cartasDP@agregarReglasJuegos');

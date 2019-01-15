@@ -54,7 +54,7 @@ class ruletaDP extends Controller
     function pin ($id){
         $giroId = giro::select("id")->orderBy('id', 'desc')->limit(1)
             ->get();
-        $giroPin = giro::where('id', $giroId)
+        $giroPin = giro::where('id', $giroId[0]->id)
             ->update(['pin' => $id]);
         if ($giroPin)
             return Array("success"=>true, "id"=>$giroId);
