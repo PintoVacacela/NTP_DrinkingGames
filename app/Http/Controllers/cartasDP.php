@@ -7,6 +7,7 @@ use App\cartas;
 use App\reglas;
 use App\reglas_x_juegos;
 use App\jugador;
+use App\puntaje;
 use phpDocumentor\Reflection\Types\Array_;
 
 class cartasDP extends Controller
@@ -70,7 +71,16 @@ class cartasDP extends Controller
         return json_encode($todo1);
 
     }
+    function modificarPuntaje(Request $request)
+    {
+        $puntajeCartas = puntaje::select("puntajes_cartas")->where("id_jugador", $request->input('id_jugador'))->get();
+        $resul = puntaje::where("id_jugador", $request->input('id_jugador'))->update(["puntajes_cartas" => $puntajeCartas[0]["puntajes_cartas"]+1]);
 
+        if ($resul)
+            return true;
+        else
+            return false;
+    }
 
     function consultarCartas(){
         $carta = \App\reglas::all();
