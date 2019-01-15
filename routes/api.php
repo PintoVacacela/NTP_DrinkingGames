@@ -36,6 +36,7 @@ Route::post('/addcolores','ruletaDP@setColores');
 Route::post('/addreglasruleta','ruletaDP@setReglasColores');
 Route::post('/addcartas','cartasDP@agregarCartas');
 Route::post('/addreglas','cartasDP@agregarReglas');
+Route::post('/editpuntajecartas','cartasDP@modificarPuntaje');
 Route::post('/addreglasjuego','cartasDP@agregarReglasJuegos');
 Route::get('/dadosdesorden','dadosDP@obtJugador');
 

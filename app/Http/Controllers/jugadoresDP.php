@@ -29,9 +29,9 @@ class jugadoresDP extends Controller
         $puntaje = new puntaje;
         //$puntaje->id = 0;
         $puntaje->id_jugador = $jugador[0]->id;
-        $puntaje->puntajes_cartas = 2;
-        $puntaje->puntajes_dados = 2;
-        $puntaje->puntajes_ruleta = 2;
+        $puntaje->puntajes_cartas = 0;
+        $puntaje->puntajes_dados = 0;
+        $puntaje->puntajes_ruleta = 0;
         $puntaje->save();
         return Array('result'=>$puntaje);
     }

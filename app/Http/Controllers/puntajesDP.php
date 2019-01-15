@@ -70,17 +70,6 @@ class puntajesDP extends Controller
         $puntaje->save();
         return Array('result'=>$puntaje);
     }*/
-    function modificarPuntaje(Request $request)
-    {
-        $puntaje = \App\puntaje::find($request->input('id_jugador'));
-        $puntaje->nombre = $request->input('puntajes_cartas');
-        $puntaje->apellido = $request->input('puntajes_dados');
-        $puntaje->fechaNac = $request->input('puntajes_ruleta');
-        $puntaje->save();
-        if ($puntaje)
-            return true;
-        else
-            return false;
-    }
+
 
 }
