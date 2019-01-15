@@ -33,6 +33,7 @@ Route::get('/getgiros', 'ruletaDP@getGiros');
 Route::get('/getpin', 'ruletaDP@getPin');
 Route::post('/ruleta/{id}','ruletaDP@pin');
 Route::post('/addcolores','ruletaDP@setColores');
+Route::post('/addreglasruleta','ruletaDP@setReglasColores');
 Route::post('/addcartas','cartasDP@agregarCartas');
 Route::post('/addreglas','cartasDP@agregarReglas');
 Route::post('/addreglasjuego','cartasDP@agregarReglasJuegos');

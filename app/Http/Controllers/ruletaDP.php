@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ruleta;
 use App\giro;
+use App\colores_x_regla;
 
 //use App\puntajes;
 class ruletaDP extends Controller
@@ -76,5 +77,12 @@ class ruletaDP extends Controller
         $ruleta->pin = $request->input('pin');
         $ruleta->save();
         return Array('result'=>$ruleta);
+    }
+    function setReglasColores(Request $request){
+        $ruletareglas = new colores_x_regla;
+        $ruletareglas->color_led = $request->input('color_led');
+        $ruletareglas->pin = $request->input('pin');
+        $ruletareglas->save();
+        return Array('result'=>$ruletareglas);
     }
 }
