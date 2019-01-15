@@ -98,7 +98,7 @@ class dadosDP extends Controller
         $arr2 [0] = null;
         $aux =count($jugadores)-1;
         while($count<=$aux){
-            $num1=rand(0,aux);
+            $num1=rand(0,$aux);
             if(!in_array($num1,$arr))
             {
                 $arr[$count]=$num1;
