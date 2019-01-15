@@ -80,8 +80,8 @@ class ruletaDP extends Controller
     }
     function setReglasColores(Request $request){
         $ruletareglas = new colores_x_regla;
-        $ruletareglas->color_led = $request->input('color_led');
-        $ruletareglas->pin = $request->input('pin');
+        $ruletareglas->id_regla = $request->input('id_regla');
+        $ruletareglas->id_pin = $request->input('id_pin');
         $ruletareglas->save();
         return Array('result'=>$ruletareglas);
     }
