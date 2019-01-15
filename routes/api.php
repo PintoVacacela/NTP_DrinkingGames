@@ -41,3 +41,4 @@ Route::post('/addreglasjuego','cartasDP@agregarReglasJuegos');
 Route::get('/dadosdesorden','dadosDP@obtJugador');
 
 
+
