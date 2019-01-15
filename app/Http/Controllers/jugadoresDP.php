@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\jugador;
+use App\puntaje;
 use PhpParser\Node\Expr\Array_;
 
 
