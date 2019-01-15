@@ -12,7 +12,15 @@ use phpDocumentor\Reflection\Types\Array_;
 class cartasDP extends Controller
 {
 
-
+    function agregarCartas(Request $request){
+        $cartas = new cartas;
+        //$jugador->id = 0;
+        $cartas->numero = $request->input('numero');
+        $cartas->palo = $request->input('palo');
+        $cartas->imagen = $request->input('imagen');
+        $cartas->save();
+        return Array('result'=>$cartas);
+    }
 
     function cascada()
     {
