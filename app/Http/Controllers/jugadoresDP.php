@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\jugador;
+use App\puntaje;
 use PhpParser\Node\Expr\Array_;
 
 
@@ -22,14 +23,15 @@ class jugadoresDP extends Controller
         $this->agregarPuntaje($request->input('apodo'));
 
     }
-    function agregarPuntaje( $apodo){
-        $jugador = \App\jugador::find($apodo);
+    function agregarPuntaje($apodo){
+        $jugador = jugador::select('id')->where('apodo',$apodo)->get();
+        //echo $jugador;
         $puntaje = new puntaje;
-        $puntaje->id = 0;
-        $puntaje->id_jugador = $jugador->id;
-        $puntaje->puntajes_cartas = 0;
-        $puntaje->puntajes_dados = 0;
-        $puntaje->puntajes_ruleta = 0;
+        //$puntaje->id = 0;
+        $puntaje->id_jugador = $jugador[0]->id;
+        $puntaje->puntajes_cartas = 2;
+        $puntaje->puntajes_dados = 2;
+        $puntaje->puntajes_ruleta = 2;
         $puntaje->save();
         return Array('result'=>$puntaje);
     }
