@@ -22,7 +22,7 @@ class jugadoresDP extends Controller
         $this->agregarPuntaje($request->input('apodo'));
 
     }
-    function agregarPuntaje( $apodo){
+    function agregarPuntaje($apodo){
         $jugador = jugador::select('id')->where('apodo',$apodo)->get();
         //echo $jugador;
         $puntaje = new puntaje;
