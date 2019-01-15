@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\jugador;
 use PhpParser\Node\Expr\Array_;
 
+
 class jugadoresDP extends Controller
 {
     //
@@ -18,6 +19,19 @@ class jugadoresDP extends Controller
         $jugador->apodo = $request->input('apodo');
         $jugador->save();
         return Array('result'=>$jugador);
+        $this->agregarPuntaje($request->input('apodo'));
+
+    }
+    function agregarPuntaje( $apodo){
+        $jugador = \App\jugador::find($apodo);
+        $puntaje = new puntaje;
+        $puntaje->id = 0;
+        $puntaje->id_jugador = $jugador->id;
+        $puntaje->puntajes_cartas = 0;
+        $puntaje->puntajes_dados = 0;
+        $puntaje->puntajes_ruleta = 0;
+        $puntaje->save();
+        return Array('result'=>$puntaje);
     }
     function editarJugador(Request $request){
         $time = strtotime($request->input('fechaNac'));

@@ -60,4 +60,27 @@ class puntajesDP extends Controller
         }
         return Array('data' => $resultado);
     }
+    function agregarPuntaje(Request $request){
+        $puntaje = new puntaje;
+        $puntaje->id = 0;
+        $puntaje->id_jugador = $request->input('id_jugador');
+        $puntaje->puntajes_cartas = $request->input('puntajes_cartas');
+        $puntaje->puntajes_dados = $request->input('puntajes_dados');
+        $puntaje->puntajes_ruleta = $request->input('puntajes_ruleta');
+        $puntaje->save();
+        return Array('result'=>$puntaje);
+    }
+    function modificarPuntaje(Request $request)
+    {
+        $puntaje = \App\puntaje::find($request->input('id_jugador'));
+        $puntaje->nombre = $request->input('puntajes_cartas');
+        $puntaje->apellido = $request->input('puntajes_dados');
+        $puntaje->fechaNac = $request->input('puntajes_ruleta');
+        $puntaje->save();
+        if ($puntaje)
+            return true;
+        else
+            return false;
+    }
+
 }
