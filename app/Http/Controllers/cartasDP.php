@@ -20,6 +20,14 @@ class cartasDP extends Controller
         $reglas->save();
         return Array('result'=>$reglas);
     }
+    function agregarReglasJuegos(Request $request){
+        $reglasjuego = new reglas_x_juegos;
+        //$jugador->id = 0;
+        $reglasjuego->id_reglas = $request->input('id_reglas');
+        $reglasjuego->id_juego = $request->input('id_juego');
+        $reglasjuego->save();
+        return Array('result'=>$reglasjuego);
+    }
 
     function agregarCartas(Request $request){
         $cartas = new cartas;
