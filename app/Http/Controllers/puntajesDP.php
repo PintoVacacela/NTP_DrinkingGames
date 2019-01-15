@@ -60,7 +60,7 @@ class puntajesDP extends Controller
         }
         return Array('data' => $resultado);
     }
-    function agregarPuntaje(Request $request){
+    /*function agregarPuntaje(Request $request){
         $puntaje = new puntaje;
         $puntaje->id = 0;
         $puntaje->id_jugador = $request->input('id_jugador');
@@ -69,7 +69,7 @@ class puntajesDP extends Controller
         $puntaje->puntajes_ruleta = $request->input('puntajes_ruleta');
         $puntaje->save();
         return Array('result'=>$puntaje);
-    }
+    }*/
     function modificarPuntaje(Request $request)
     {
         $puntaje = \App\puntaje::find($request->input('id_jugador'));
