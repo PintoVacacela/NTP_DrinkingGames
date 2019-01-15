@@ -105,7 +105,7 @@ class dadosDP extends Controller
                 $count++;
             }
         }
-        for($i=0;$i<=count($jugadores);$i++) {
+        for($i=0;$i<count($jugadores);$i++) {
             $arr2[$i]=$jugadores[$arr[$i]];
         }
         return json_encode($arr2);
