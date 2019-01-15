@@ -26,7 +26,7 @@ Route::get('/juegoCascada','cartasDP@cascada');
 Route::get('/getpuntaje/{juego}', 'puntajesDP@getTop5');
 Route::get('/prue','cartasDP@prueba');
 Route::get('/dados','dadosDP@index');
-Route::post('/editarpuntaje/{apodo}','jugadoresDP@agregarPuntaje');
+Route::put('/editarPuntaje','puntajesDP@editarPuntaje');
 Route::post('/setgiro/{valor}','ruletaDP@setGiro');
 Route::get('/getgiro', 'ruletaDP@getGiro');
 Route::get('/getgiros', 'ruletaDP@getGiros');
@@ -36,5 +36,6 @@ Route::post('/addcolores','ruletaDP@setColores');
 Route::post('/addcartas','cartasDP@agregarCartas');
 Route::post('/addreglas','cartasDP@agregarReglas');
 Route::post('/addreglasjuego','cartasDP@agregarReglasJuegos');
-Route::delete('/eliminarreglajugador/{idJuego}/{id_regla}','cartasDP@eliminarReglaJuego');
+Route::get('/dadosDesorden','dadosDP@obtJugadores');
+
 
