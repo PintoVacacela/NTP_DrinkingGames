@@ -70,7 +70,7 @@ class ruletaDP extends Controller
             ->get();
         $resul = colores_x_regla::select("reglas.descripcion")
             ->join('reglas', 'reglas.id', '=', 'colores_x_regla.id_regla')
-        ->where("colores_x_regla.id_pin", $pin[0]["pin"]);
+        ->where("colores_x_regla.id_pin", $pin[0]["pin"])->get();
         if ($resul)
             return Array("data" => $resul);
         else
