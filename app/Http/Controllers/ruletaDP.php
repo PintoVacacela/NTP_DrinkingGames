@@ -70,7 +70,11 @@ class ruletaDP extends Controller
         else
             return Array('success' => false);
     }
-    function getColor(){
-
+    function setColores(Request $request){
+        $ruleta = new ruleta;
+        $ruleta->color_led = $request->input('color_led');
+        $ruleta->pin = $request->input('pin');
+        $ruleta->save();
+        return Array('result'=>$ruleta);
     }
 }
