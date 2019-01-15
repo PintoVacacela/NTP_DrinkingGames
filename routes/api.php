@@ -33,5 +33,5 @@ Route::get('/ruleta/{id}','ruletaDP@pin');
 Route::post('/addcartas','cartasDP@agregarCartas');
 Route::post('/addreglas','cartasDP@agregarReglas');
 Route::post('/addreglasjuego','cartasDP@agregarReglasJuegos');
-Route::delete('/eliminarreglajugador/{id}','cartasDP@eliminarReglaJuego');
+Route::delete('/eliminarreglajugador/{idJuego}/{id_regla}','cartasDP@eliminarReglaJuego');
 
