@@ -29,5 +29,5 @@ Route::get('/dados','dadosDP@index');
 Route::post('/setgiro/{valor}','ruletaDP@setGiro');
 Route::get('/getgiro', 'ruletaDP@getGiro');
 Route::get('/ruleta/{id}','ruletaDP@pin');
-Route::post('/juegoCascada','cartasDP@agregarCartas');
+Route::post('/addcartas','cartasDP@agregarCartas');
 
