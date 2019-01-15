@@ -23,7 +23,7 @@ class jugadoresDP extends Controller
 
     }
     function agregarPuntaje( $apodo){
-        $jugador = \App\jugador::find($apodo);
+        $jugador = \App\jugador::select("id")->where("apodo",$apodo)->get();
         $puntaje = new puntaje;
         $puntaje->id = 0;
         $puntaje->id_jugador = $jugador->id;
