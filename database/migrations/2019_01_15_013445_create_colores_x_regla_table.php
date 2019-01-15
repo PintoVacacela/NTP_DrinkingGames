@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGirosTable extends Migration
+class CreateColoresXReglaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateGirosTable extends Migration
      */
     public function up()
     {
-        Schema::create('giros', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('valor')->nullable();
-            $table->integer('pin')->nullable();
+        Schema::create('colores_x_regla', function (Blueprint $table) {
+            $table->integer('id_regla')->nullable();
+            $table->integer('id_pin')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateGirosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('giros');
+        Schema::dropIfExists('colores_x_regla');
     }
 }

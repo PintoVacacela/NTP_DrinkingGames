@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGirosTable extends Migration
+class CreateReglasdadosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateGirosTable extends Migration
      */
     public function up()
     {
-        Schema::create('giros', function (Blueprint $table) {
+        Schema::create('reglasdados', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('valor')->nullable();
-            $table->integer('pin')->nullable();
+            $table->string('reto1')->nullable();
+            $table->string('reto2')->nullable();
+            $table->string('accion')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateGirosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('giros');
+        Schema::dropIfExists('reglasdados');
     }
 }

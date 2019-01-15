@@ -16,9 +16,9 @@ class CreatePuntajesTable extends Migration
         Schema::create('puntajes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_jugador');
-            $table->integer('puntajes_cartas');
-            $table->integer('puntajes_dados');
-            $table->integer('puntajes_ruleta');
+            $table->integer('puntajes_cartas')->nullable();
+            $table->integer('puntajes_dados')->nullable();
+            $table->integer('puntajes_ruleta')->nullable();
             $table->timestamps();
         });
     }

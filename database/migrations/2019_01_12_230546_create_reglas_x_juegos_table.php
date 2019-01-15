@@ -15,8 +15,8 @@ class CreateReglasXJuegosTable extends Migration
     {
         Schema::create('reglas_x_juegos', function (Blueprint $table) {
 
-            $table->integer('id_reglas');
-            $table->integer('id_juego');
+            $table->integer('id_reglas')->nullable();
+            $table->integer('id_juego')->nullable();
             $table->timestamps();
         });
     }

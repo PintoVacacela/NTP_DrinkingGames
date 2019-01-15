@@ -47,11 +47,25 @@ class ruletaDP extends Controller
         }
     }
     function pin ($id){
-        $pin = $id;
-        if (isset($pin)) {
-            return Array('pin' => $pin);
-        }
+        $giroId = giro::select("id")->orderBy('id', 'desc')->limit(1)
+            ->get();
+        $giroPin = giro::where('id', $giroId)
+            ->update(['pin' => $id]);
+        if ($giroPin)
+            return Array("success"=>true, "id"=>$giroId);
+        else
+            return Array("success" => false);
+
+    }
+    function getPin(){
+        $resul = giro::select("pin")->orderBy('id', 'desc')->limit(1)
+            ->get();
+        if ($resul)
+            return $resul;
         else
             return Array('success' => false);
+    }
+    function getColor(){
+
     }
 }

@@ -15,9 +15,9 @@ class CreateCartasTable extends Migration
     {
         Schema::create('cartas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('numero');
-            $table->string('palo');
-            $table->string('imagen');
+            $table->string('numero')->nullable();
+            $table->string('palo')->nullable();
+            $table->string('imagen')->nullable();
             $table->timestamps();
         });
     }

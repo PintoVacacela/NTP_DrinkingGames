@@ -15,8 +15,8 @@ class CreateReglasTable extends Migration
     {
         Schema::create('reglas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descripcion');
-            $table->string('detalle');
+            $table->string('descripcion')->nullable();
+            $table->string('detalle')->nullable();
             $table->timestamps();
         });
     }

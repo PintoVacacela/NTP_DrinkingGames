@@ -15,7 +15,7 @@ class CreateDadosTable extends Migration
     {
         Schema::create('dados', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
+            $table->string('nombre')->nullable();
             $table->timestamps();
         });
     }

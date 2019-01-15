@@ -15,7 +15,8 @@ class CreateRuletasTable extends Migration
     {
         Schema::create('ruletas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('color_led');
+            $table->string('color_led')->nullable();
+            $table->integer('pin')->nullable();
             $table->timestamps();
         });
     }
