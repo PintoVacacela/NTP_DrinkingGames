@@ -7,23 +7,6 @@ use App\dados;
 
 class dadosDP extends Controller
 {
-    function desordenarDados($dados)
-    {
-        $aux=count($dados)-1;
-        $count=0;
-        $arr[0]=null;
-        while($count<=$aux)
-        {
-            $num1=rand(0,$aux);
-            if(!in_array($num1,$arr))
-            {
-                $arr[$count]=$num1;
-                $count++;
-            }
-        }
-        return $arr;
-    }
-
     function obtenerRegla($id_dado)
     {
         $reglas_x_juegos=\App\reglas_x_juegos::all();
@@ -55,10 +38,26 @@ class dadosDP extends Controller
      */
     public function index()
     {
-        $dados = dados::all();
-        //print_r($dados);
-        return response()->json($dados, 200);
+        $jugadores= \App\jugador::all();
+        $dados = \App\dados::all();
+        $regla[0]=null;
+        $todo[][]=null;
+        $count=0;
+        for($i=0;$i<count($dados);$i++)
+        {
+            if($count>=count($jugadores))
+                $count=0;
+            $regla[$i] = $this->obtenerRegla($regla[$i]->id);
+            $todo[$i][0] = $dados[$i];
+            $todo[$i][1] = $regla[$i];
+            $todo[$i][2]=$jugadores[$count];
+            $count++;
+
+        }
+        $todo1=Array('data'=>$todo);
+        return json_encode($todo1);
     }
+
 
     /**
      * Show the form for creating a new resource.
