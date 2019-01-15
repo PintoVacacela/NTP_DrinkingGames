@@ -46,6 +46,11 @@ class ruletaDP extends Controller
             $usuario->save();
         }
     }
+    function getGiros(){
+        $giro = Array('data'=>giro::all());
+        $resultado = json_encode($giro);
+        return $resultado;
+    }
     function pin ($id){
         $giroId = giro::select("id")->orderBy('id', 'desc')->limit(1)
             ->get();
@@ -61,7 +66,7 @@ class ruletaDP extends Controller
         $resul = giro::select("pin")->orderBy('id', 'desc')->limit(1)
             ->get();
         if ($resul)
-            return $resul;
+            return Array("data" => $resul);
         else
             return Array('success' => false);
     }
