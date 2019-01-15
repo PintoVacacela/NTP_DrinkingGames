@@ -30,4 +30,5 @@ Route::post('/setgiro/{valor}','ruletaDP@setGiro');
 Route::get('/getgiro', 'ruletaDP@getGiro');
 Route::get('/ruleta/{id}','ruletaDP@pin');
 Route::post('/addcartas','cartasDP@agregarCartas');
+Route::post('/addreglas','cartasDP@agregarReglas');
 

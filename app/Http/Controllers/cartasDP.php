@@ -12,6 +12,15 @@ use phpDocumentor\Reflection\Types\Array_;
 class cartasDP extends Controller
 {
 
+    function agregarReglas(Request $request){
+        $reglas = new reglas;
+        //$jugador->id = 0;
+        $reglas->descripcion = $request->input('descripcion');
+        $reglas->detalle = $request->input('detalle');
+        $reglas->save();
+        return Array('result'=>$reglas);
+    }
+
     function agregarCartas(Request $request){
         $cartas = new cartas;
         //$jugador->id = 0;
