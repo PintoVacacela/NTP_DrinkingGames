@@ -29,6 +29,8 @@ Route::get('/dados','dadosDP@index');
 Route::post('/editarpuntaje/{apodo}','jugadoresDP@agregarPuntaje');
 Route::post('/setgiro/{valor}','ruletaDP@setGiro');
 Route::get('/getgiro', 'ruletaDP@getGiro');
+Route::get('/getgiros', 'ruletaDP@getGiros');
+Route::get('/getpin', 'ruletaDP@getPin');
 Route::post('/ruleta/{id}','ruletaDP@pin');
 Route::post('/addcartas','cartasDP@agregarCartas');
 Route::post('/addreglas','cartasDP@agregarReglas');
