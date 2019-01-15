@@ -90,9 +90,25 @@ class dadosDP extends Controller
      * @param  \App\dados  $dados
      * @return \Illuminate\Http\Response
      */
-    public function show(dados $dados)
+    public function obtJugador()
     {
-        //
+        $jugadores=\App\jugador::all();
+        $count =0;
+        $arr [0] = null;
+        $arr2 [0] = null;
+        $aux =count($jugadores)-1;
+        while($count<=$aux){
+            $num1=rand(0,aux);
+            if(!in_array($num1,$arr))
+            {
+                $arr[$count]=$num1;
+                $count++;
+            }
+        }
+        for($i=0;$i<=count($jugadores);$i++) {
+            $arr2[$i]=$jugadores[$arr[$i]];
+        }
+        return json_encode($arr2);
     }
 
     /**
